@@ -14,37 +14,20 @@ enum class month
     September=9,   
     October=10,   
     November=11,   
-    December=12,
-    Goodbye=0
-};
-enum class errors
-{
-    Ok,  
-    Error,  
-    Fatal_Error
+    December=12
+    
 };
 
-errors F(int value)
-{ 
-    if (value > 0 && value < 13)
-    {
-        return errors::Ok;
-    } 
-    else if(value < 0 || value > 13)
-    {
-        return errors::Error;
-    }
-    else 
-    {
-        return errors::Fatal_Error;
-    }
-}
 int main() 
 {
     int monthNumber;
-    cout << "Enter number month:  " << endl;
-    cin >> monthNumber;
+    cout << "Enter number month:  "<<endl;
+    cin >>monthNumber;
+   
     month selectedMonth = static_cast<month>(monthNumber);
+    if(monthNumber!=0)
+    {
+      
     switch(selectedMonth)
     {
         case month::January:     cout << "January" << endl; break;
@@ -59,14 +42,20 @@ int main()
         case month::October:     cout << "October" << endl; break;
         case month::November:    cout << "November" << endl; break;
         case month::December:    cout << "December" << endl; break;
-        case month::Goodbye:     cout << "Goodbye" << endl; break;
+      
         default:                 cout << "Invalid month number" << endl; break;
     }
     
+}
+else
+{
+   cout << "Goodbay" << endl; 
+  }
+  
     return 0;
 } 
 
-Задание 2
+// Задание 2
 #include <iostream> 
 #include <string>
 using namespace std;
@@ -75,7 +64,12 @@ struct Person
  int accoutNumber =-1;
  string f_name = "No ";
  double balance = -1;
+ double newbalance = -1;
 };
+void print(Person p)
+{
+cout<<"Your accout: "<<p.accoutNumber <<", " <<p.f_name <<", " << p.newbalance <<endl; 
+}
 int main()
 {
 int accoutNumber;
@@ -90,50 +84,9 @@ cout<<"Enter balance"<<endl;
 cin>>balance;
 cout<<"Enter new balance"<<endl;
 cin>>newbalance;
-Person My_self={.accoutNumber=accoutNumber,.f_name=name,.balance=balance};
- Person Other_person;
- My_self.balance = newbalance;
-cout<<"Your accout: "<<My_self.accoutNumber <<", " <<My_self.f_name <<", " << My_self.balance <<endl; 
+Person My_self={.accoutNumber=accoutNumber,.f_name=name,.balance=balance,.newbalance = newbalance};
+print(My_self); 
+ 
+
  return 0;
-}
-задание 3 
-#include <iostream> 
-#include <string>
- using namespace std;
-struct Data
-{ string city = "No "; 
-string street = "No "; 
-int houseNumber =-1;
-int cartherasNumber =-1; 
-int postalCode =-1;
-};
-void print(const Data& p)
-{
-cout<<"city: "<<p.city <<endl;
-cout<<"street: " <<p.street <<endl; 
-cout<<"houseNumber: " << p.houseNumber <<endl; 
-cout<<"carthera'sNumber: " << p.cartherasNumber <<endl;
-cout<<"postalCode: " << p.postalCode <<endl;
-}
-int main()
-{
-string city;
-string street;
-int cartherasNumber;
-int houseNumber;
-int postalCode; 
-cout<<"Enter city"<<endl;
-cin>>city;
-cout<<"Enter street"<<endl;
-cin>>street;
-cout<<"Enter houseNumber"<<endl;
-cin>> houseNumber;
-cout<<"Enter cartherasNumber"<<endl;
-cin>>cartherasNumber; 
-cout<<"Enter postalCode"<<endl;
-cin>>postalCode; 
-Data My_self={.city=city,.street=street,.houseNumber=houseNumber,.cartherasNumber=cartherasNumber,.postalCode=postalCode };
-Data Other_data;
-print(My_self);
-return 0;
 }
